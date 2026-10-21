@@ -1556,7 +1556,7 @@ class ReportingTests(TestCase):
             workbook_xml = workbook.read("xl/workbook.xml").decode("utf-8")
             add_sheet = workbook.read("xl/worksheets/sheet3.xml").decode("utf-8")
             review_sheet = workbook.read("xl/worksheets/sheet5.xml").decode("utf-8")
-            ns = {"s": "http://internal.internal.internal.example.invalid/spreadsheetml/2006/main"}
+            ns = {"s": "http://schemas.openxmlformats.org/spreadsheetml/2006/main"}
             rows = ET.fromstring(add_sheet).findall("s:sheetData/s:row", ns)
         self.assertIn('name="Довнести в БУХ"', workbook_xml)
         self.assertIn('name="Лишние в БУХ"', workbook_xml)

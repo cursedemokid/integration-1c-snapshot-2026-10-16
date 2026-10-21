@@ -1,3 +1,12 @@
+# Optional tests for local-only pilot utilities. Public CI remains portable.
+import importlib.util as _import_util
+import unittest as _unittest
+_missing_local_tools = [name for name in (
+    'scripts.final_acceptance_audit',
+) if _import_util.find_spec(name) is None]
+if _missing_local_tools:
+    raise _unittest.SkipTest("Local pilot utilities are not shipped: " + ", ".join(_missing_local_tools))
+
 import signal
 import time
 import unittest
